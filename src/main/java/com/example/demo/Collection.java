@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+
+
+@RestController
 public class Collection {
 
-    private List<Person> investmentsFromDb;
+    private List<Person> investmentsFromDb = new ArrayList<>();
 
-    private InvestmentWorker worker;
+    private InvestmentWorker worker = new InvestmentWorker();
 
 
     public Collection(){
@@ -23,9 +26,9 @@ public class Collection {
 
     @PostMapping("/profit")
     @ResponseBody
-    ResponseEntity<List<Person>> login( @Valid @RequestBody Person recievedProfit) {
+    ResponseEntity<List<Person>> login() {
 
-        for (int i=0; i <= investmentsFromDb.size(); i++){
+        for (int i=0; i <= investmentsFromDb.size() -1 ; i++){
             if (investmentsFromDb.get(i).investment > 0){
                 worker.pay(investmentsFromDb.get(i),10);
                 investmentsFromDb.get(i).active=true;

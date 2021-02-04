@@ -1,10 +1,11 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InvestmentWorker {
 
-    private List<Person> receivedShare;
+    private List<Person> receivedShare = new ArrayList<Person>();
 
     void pay (Person person, int amount)
     {
